@@ -8,22 +8,22 @@ Alfred Battery shows:
 
 - the current charging state
 - the remaining time until full or empty
-- the tempertature
+- the temperature
 - the charging cycles
 - the health
 - as well as the serial number
 
-Alfred Battery uses a a [built-in Swift][built-in-swift] programm to retive the battery information from the system.
+Alfred Battery uses a [built-in Swift][built-in-swift] program to retrieve the battery information from the system.
 
 ## Dependencies
 
-The Alfred Battery workflow dependes on a [python3.7+][python] installation. Install `python3` e.g. via. [Homebrew][homebrew] `brew install python`.
+The Alfred Battery workflow depends on a [python3.7+][python] installation. Install `python3` e.g. via. [Homebrew][homebrew] `brew install python`.
 
-Additionaly during the first execution and after an update of the workflow, the workflow compiles the `BatteryInfo` programm. This programm dependes on swift and the macOS `command line tools`. [freeCodeCamp tutorial][command-line-tutorial]
+Additionally during the first execution and after an update of the workflow, the workflow compiles the `BatteryInfo` program. This program depends on swift and the macOS `command line tools`. [freeCodeCamp tutorial][command-line-tutorial]
 
 ## Licence, thanks
 
-The workflow code, the bundeled [Alfred-PyWorkflow][alfred-pyworkflow] library as well as the graphics are all under the [MIT Licence][mit-licence].
+The workflow code, the bundled [Alfred-PyWorkflow][alfred-pyworkflow] library as well as the graphics are all under the [MIT Licence][mit-licence].
 
 The original idea is from [BenziAhamed][benzi-ahamed] and his [Battery workflow][benzi-ahamed-alfred-battery]
 
