@@ -42,7 +42,7 @@ ICON_SERIAL = 'icons/serial.png'
 
 
 class BatteryInfo(object):
-    """Encapsulates the functionallity of the battery workflow
+    """Encapsulates the functionality of the battery workflow
 
     Display battery information of your Apple laptop.
     """
@@ -53,7 +53,7 @@ class BatteryInfo(object):
         self.wf = None
 
     def battery_info_program(self):
-        """Return path to BateryInfo executable.
+        """Return path to BatteryInfo executable.
 
         Returns:
             str: Path to ``BatteryInfo`` executable.
@@ -131,11 +131,11 @@ class BatteryInfo(object):
 
 
     def get_battery_info(self) -> tuple[bool, dict | str]:
-        """Get the system battery inforamtion from your laptop
+        """Get the system battery information from your laptop
 
         Returns:
             tuple[bool, dict | str]: In case of success True and the battery info
-                otherwiese False and None
+                otherwise False and None
         """
         bi = self.battery_info_program()
 
