@@ -174,10 +174,10 @@ class BatteryInfo(object):
         external = battery_info['ExternalConnected']
 
         if time_to_empty < 15000:
-            time_left = f'{round(time_to_empty/60)}:{round(time_to_empty%60)}'
+            time_left = f'{round(time_to_empty/60)}:{round(time_to_empty%60):02d}'
 
         if time_to_full < 15000:
-            time_full = f'{round(time_to_full/60)}:{round(time_to_full%60)}'
+            time_full = f'{round(time_to_full/60)}:{round(time_to_full%60):02d}'
 
         if charging:
             time_info = f'{time_full} until full'
