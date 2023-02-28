@@ -130,11 +130,11 @@ class BatteryInfo(object):
             return False, None
 
 
-    def get_battery_info(self) -> tuple[bool, dict | str]:
+    def get_battery_info(self) -> tuple["bool, dict | str"]:
         """Get the system battery information from your laptop
 
         Returns:
-            tuple[bool, dict | str]: In case of success True and the battery info
+            tuple["bool, dict | str"]: In case of success True and the battery info
                 otherwise False and None
         """
         bi = self.battery_info_program()
