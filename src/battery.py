@@ -52,76 +52,6 @@ class BatteryInfo(object):
         """
         self.wf = None
 
-    def battery_info_program(self):
-        """Return path to BatteryInfo executable.
-
-        Returns:
-            str: Path to ``BatteryInfo`` executable.
-        """
-        return self.wf.cachefile('BatteryInfo')
-
-
-    def battery_info_check_update(self):
-
-        key = '__battery_info_update'
-        # Cache that a workflow update is available. This will lead to a BatteryInfo update
-        if self.wf.update_available:
-            status = self.wf.cache_data(key, {
-                'available': True,
-                'version' : self.wf.version
-            })
-            return False
-
-        status = self.wf.cached_data(key, max_age=0)
-        if not status or not status.get('available'):
-            return False
-
-        return True
-
-
-    def install_battery_info(self):
-        bi = self.battery_info_program()
-        if os.path.exists(bi):
-            os.unlink(bi)
-
-        tempdir = tempfile.mkdtemp(prefix='aw-', dir=self.wf.cachedir)
-
-        try:
-            os.chdir(tempdir)
-            source_code = os.path.join(self.wf.workflowdir, 'BatteryInfo.swift')
-            binary_src = os.path.join(tempdir, 'BatteryInfo')
-            binary_dest = os.path.join(self.wf.cachedir, 'BatteryInfo')
-
-            cmd = [
-                'swiftc',
-                source_code]
-
-            retcode = subprocess.call(cmd)
-            if retcode != 0:
-                raise RuntimeError(f'BatteryInfo compilation exited with {retcode}')
-
-            if not os.path.exists(binary_src):  # pragma: nocover
-                raise ValueError(f'Compiled BatteryInfo file not found: {binary_src}')
-
-            shutil.move(binary_src, binary_dest)
-
-            if not os.path.exists(binary_dest):  # pragma: nocover
-                raise ValueError(f'Compiled BatteryInfo file not found: {binary_src}')
-
-        finally:
-            os.chdir(self.wf.workflowdir)
-
-            try:
-                shutil.rmtree(tempdir)
-            except OSError:  # pragma: no cover
-                pass
-
-        # Update successfully
-        self.wf.cache_data('__battery_info_update', {
-                'available': False,
-                'version' : self.wf.version
-            })
-
 
     def convert_battery_info(self, info):
         try:
@@ -137,14 +67,7 @@ class BatteryInfo(object):
             tuple["bool, dict | str"]: In case of success True and the battery info
                 otherwise False and None
         """
-        bi = self.battery_info_program()
-
-        # Install if BatteryInfo does not exist
-        if (not os.path.exists(bi)) or self.battery_info_check_update():
-            self.install_battery_info()
-
-
-        output = run_command([bi]).decode('utf-8')
+        output = run_command(['./BatteryInfo']).decode('utf-8')
         return self.convert_battery_info(output)
 
 
@@ -254,7 +177,6 @@ class BatteryInfo(object):
         # Notify user if update is available
         # ------------------------------------------------------------------
         if wf.update_available:
-            self.battery_info_check_update()
             self.wf.add_item('Workflow Update is Available',
                         '↩ or ⇥ to install',
                         autocomplete='workflow:update',
