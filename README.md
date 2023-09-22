@@ -1,51 +1,54 @@
-# Alfred Battery
+# Battery Alfred Workflow
 
-[![GitHub Version][version-shield]][releases]
-[![GitHub All Releases][downloads-shield]][releases]
-[![GitHub][licence-shield]][mit-licence]
+[![GitHub Version][version-shield]][gh-releases]
+[![GitHub All Releases][downloads-shield]][gh-releases]
+[![GitHub][license-shield]][mit-license]
 
-Display battery information of your Apple laptop in Alfred
+Display battery information of your Apple laptop in [Alfred][alfred]
 
-![][demo]
+![][preview]
 
-Alfred Battery shows:
+## Download & Installation
 
-- the current charging state
-- the remaining time until full or empty
-- the temperature
-- the charging cycles
-- the health
-- as well as the serial number
+Download the [latest workflow release][gh-latest-release] from GitHub. Open the workflow file to
+install in Alfred.
 
-Alfred Battery uses a [built-in Swift][built-in-swift] program to retrieve the battery information from the system.
+## Usage
 
-## Requirements
+- `battery` — Show battery charging state and additional information
+  - Charging state `Draining`, `Charging` or `Fully Charged`
+  - Remaining time until `full`, `empty` or `On AC power`
+  - Temperature in `°C`
+  - Charging cycle count
+  - Health in `%`
+  - Serial number
 
-- [Alfred][alfred] (version 4.0+)
-- The [Alfred Powerpack][alfred-powerpack].
-- Python 3.7+ ([Command Line Tools][command-line-tools]: `xcode-select --install` or [Homebrew][homebrew]: `brew install python`)
-- The Swift Compiler `swiftc` ([Command Line Tools][command-line-tools]: `xcode-select --install`)
+## Bug reports and feature requests
 
-During the first execution and after an update of the workflow, the workflow compiles the [`BatteryInfo`][built-in-swift] program.
+Please use [GitHub issues][gh-issues] to report bugs or request features.
 
-## Licence, thanks
+## Contributors
 
-The workflow code, the bundled [Alfred-PyWorkflow][alfred-pyworkflow] library as well as the graphics are all under the [MIT Licence][mit-licence].
+The original idea for this Alfred Workflow comes from the [Battery workflow][benzi-alfred-battery]
+of [Benzi][benzi-ahamed]
 
-The original idea is from [BenziAhamed][benzi-ahamed] and his [Battery workflow][benzi-ahamed-alfred-battery]
+## License
 
-[alfred-powerpack]: https://www.alfredapp.com/powerpack/
+Battery Alfred Workflow is licensed under the [MIT License][mit-license]
+
+The workflow uses the following libraries:
+
+- [Alfred-PyWorkflow][alfred-pyworkflow] ([MIT License][mit-license])
+
 [alfred-pyworkflow]: https://github.com/harrtho/alfred-pyworkflow
 [alfred]: https://www.alfredapp.com
-[benzi-ahamed-alfred-battery]: https://github.com/BenziAhamed/alfred-battery
 [benzi-ahamed]: https://github.com/BenziAhamed
-[built-in-swift]: src/BatteryInfo.swift
-[command-line-tools]: https://www.freecodecamp.org/news/install-xcode-command-line-tools/
-[demo]: demo.gif
+[benzi-alfred-battery]: https://github.com/BenziAhamed/alfred-battery
 [downloads-shield]: https://img.shields.io/github/downloads/harrtho/alfred-battery/total.svg
-[homebrew]: https://brew.sh
-[licence-shield]: https://img.shields.io/github/license/harrtho/alfred-battery.svg
-[mit-licence]: http://opensource.org/licenses/MIT
-[python]: https://www.python.org
-[releases]: https://github.com/harrtho/alfred-battery/releases
+[gh-issues]: https://github.com/harrtho/alfred-battery/issues
+[gh-latest-release]: https://github.com/harrtho/alfred-battery/releases/latest
+[gh-releases]: https://github.com/harrtho/alfred-battery/releases
+[license-shield]: https://img.shields.io/github/license/harrtho/alfred-battery.svg
+[mit-license]: http://opensource.org/licenses/MIT
+[preview]: img/preview.png
 [version-shield]: https://img.shields.io/github/release/harrtho/alfred-battery.svg
